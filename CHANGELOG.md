@@ -1,3 +1,9 @@
+# CHANGELOG
+
+## 1.0.0
+
+* Implement Android
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initialize repository

@@ -15,6 +15,9 @@ migration:
     - platform: root
       create_revision: 6bd3e6e0065701340fda8212021198a0ab5bc1d6
       base_revision: 6bd3e6e0065701340fda8212021198a0ab5bc1d6
+    - platform: android
+      create_revision: 6bd3e6e0065701340fda8212021198a0ab5bc1d6
+      base_revision: 6bd3e6e0065701340fda8212021198a0ab5bc1d6
 
   # User provided section
 

@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:star_micronics_print/src/star_micronics_printer.dart';
 
+import 'src/interface_type.dart';
 import 'star_micronics_print_method_channel.dart';
 
 abstract class StarMicronicsPrintPlatform extends PlatformInterface {
@@ -8,7 +11,8 @@ abstract class StarMicronicsPrintPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static StarMicronicsPrintPlatform _instance = MethodChannelStarMicronicsPrint();
+  static StarMicronicsPrintPlatform _instance =
+      MethodChannelStarMicronicsPrint();
 
   /// The default instance of [StarMicronicsPrintPlatform] to use.
   ///
@@ -25,5 +29,22 @@ abstract class StarMicronicsPrintPlatform extends PlatformInterface {
 
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  // Future<List<StarMicronicsPrinter>> discovery(
+  //     List<InterfaceType> interfaceTypes, int discoveryTime) {
+  //   throw UnimplementedError('platformVersion() has not been implemented.');
+  // }
+
+  Future<void> printBitmap(Uint8List bitmap) {
+    throw UnimplementedError('printBitmap() has not been implemented.');
+  }
+
+  Future<void> printReceipt() {
+    throw UnimplementedError('printReceipt() has not been implemented');
+  }
+
+  Future<void> printPath(String path) {
+    throw UnimplementedError('printPath() has not been implemented.');
   }
 }
