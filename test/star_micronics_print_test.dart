@@ -12,23 +12,16 @@ class MockStarMicronicsPrintPlatform
     with MockPlatformInterfaceMixin
     implements StarMicronicsPrintPlatform {
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
-
-  @override
-  Future<void> printBitmap(Uint8List bitmap) {
+  Future<void> printBitmap(
+      InterfaceType interfaceType, String identifier, Uint8List bitmap) {
     // TODO: implement printBitmap
     throw UnimplementedError();
   }
 
   @override
-  Future<void> printPath(String path) {
+  Future<void> printPath(
+      InterfaceType interfaceType, String identifier, String path) {
     // TODO: implement printPath
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> printReceipt() {
-    // TODO: implement printReceipt
     throw UnimplementedError();
   }
 }
@@ -41,12 +34,12 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelStarMicronicsPrint>());
   });
 
-  test('getPlatformVersion', () async {
-    StarMicronicsPrint starMicronicsPrintPlugin = StarMicronicsPrint();
-    MockStarMicronicsPrintPlatform fakePlatform =
-        MockStarMicronicsPrintPlatform();
-    StarMicronicsPrintPlatform.instance = fakePlatform;
+  // test('getPlatformVersion', () async {
+  //   StarMicronicsPrint starMicronicsPrintPlugin = StarMicronicsPrint();
+  //   MockStarMicronicsPrintPlatform fakePlatform =
+  //       MockStarMicronicsPrintPlatform();
+  //   StarMicronicsPrintPlatform.instance = fakePlatform;
 
-    expect(await starMicronicsPrintPlugin.getPlatformVersion(), '42');
-  });
+  // expect(await starMicronicsPrintPlugin.getPlatformVersion(), '42');
+  // });
 }
