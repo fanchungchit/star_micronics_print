@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.0 + 1
+
+* Implement icon to Interface Type
+
 ## 1.1.0
 
 * Implement input
