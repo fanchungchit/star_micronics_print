@@ -10,21 +10,31 @@ class MethodChannelStarMicronicsPrint extends StarMicronicsPrintPlatform {
 
   @override
   Future<void> printBitmap(
-      InterfaceType interfaceType, String identifier, Uint8List bitmap) {
+    InterfaceType interfaceType,
+    String identifier,
+    Uint8List bitmap,
+    int copies,
+  ) {
     return methodChannel.invokeMethod('printBitmap', {
       'interfaceType': interfaceType.sdkName,
       'identifier': identifier,
       'bitmap': bitmap,
+      'copies': copies,
     });
   }
 
   @override
   Future<void> printPath(
-      InterfaceType interfaceType, String identifier, String path) {
+    InterfaceType interfaceType,
+    String identifier,
+    String path,
+    int copies,
+  ) {
     return methodChannel.invokeMethod('printPath', {
       'interfaceType': interfaceType.sdkName,
       'identifier': identifier,
       'path': path,
+      'copies': copies,
     });
   }
 }

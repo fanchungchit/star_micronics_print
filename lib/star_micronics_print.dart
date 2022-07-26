@@ -10,17 +10,19 @@ class StarMicronicsPrint {
     required InterfaceType interfaceType,
     required String identifier,
     required Uint8List bitmap,
+    int copies = 1,
   }) {
     return StarMicronicsPrintPlatform.instance
-        .printBitmap(interfaceType, identifier, bitmap);
+        .printBitmap(interfaceType, identifier, bitmap, copies);
   }
 
   Future<void> printPath({
     required InterfaceType interfaceType,
     required String identifier,
     required String path,
+    int copies = 1,
   }) {
     return StarMicronicsPrintPlatform.instance
-        .printPath(interfaceType, identifier, path);
+        .printPath(interfaceType, identifier, path, copies);
   }
 }

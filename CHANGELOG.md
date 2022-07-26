@@ -1,17 +1,21 @@
 # CHANGELOG
 
-## 1.1.0 + 1
+## 1.1.0+2
 
-* Implement icon to Interface Type
+* Add copies.
+
+## 1.1.0+1
+
+* Implement icon to Interface Type.
 
 ## 1.1.0
 
-* Implement input
+* Implement input.
 
 ## 1.0.0
 
-* Implement Android
+* Implement Android.
 
 ## 0.0.1
 
-* Initialize repository
+* Initialize repository.

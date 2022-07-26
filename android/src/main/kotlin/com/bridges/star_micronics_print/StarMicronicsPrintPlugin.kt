@@ -20,14 +20,8 @@ import kotlinx.coroutines.*
 
 /** StarMicronicsPrintPlugin */
 class StarMicronicsPrintPlugin : FlutterPlugin, MethodCallHandler {
-    /// The MethodChannel that will the communication between Flutter and native Android
-    ///
-    /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-    /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
-
-//    private var manager: StarDeviceDiscoveryManager? = null
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "star_micronics_print")
@@ -42,9 +36,10 @@ class StarMicronicsPrintPlugin : FlutterPlugin, MethodCallHandler {
                 val interfaceType = InterfaceType.valueOf(call.argument<String>("interfaceType")!!)
                 val identifier = call.argument<String>("identifier")!!
                 val bytes = call.argument<ByteArray>("bitmap")!!
+                val copies = call.argument<Int>("copies")!!
 
                 val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                printBitmap(interfaceType, identifier, bitmap)
+                printBitmap(interfaceType, identifier, bitmap, copies)
 
                 result.success("")
             }
@@ -52,9 +47,10 @@ class StarMicronicsPrintPlugin : FlutterPlugin, MethodCallHandler {
                 val interfaceType = InterfaceType.valueOf(call.argument<String>("interfaceType")!!)
                 val identifier = call.argument<String>("identifier")!!
                 val path = call.argument<String>("path")!!
+                val copies = call.argument<Int>("copies")!!
 
                 val bytes = BitmapFactory.decodeFile(path)
-                printBitmap(interfaceType, identifier, bytes)
+                printBitmap(interfaceType, identifier, bytes, copies)
                 result.success("")
             }
             else -> result.notImplemented()
@@ -65,7 +61,12 @@ class StarMicronicsPrintPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(null)
     }
 
-    private fun printBitmap(interfaceType: InterfaceType, identifier: String, bitmap: Bitmap) {
+    private fun printBitmap(
+        interfaceType: InterfaceType,
+        identifier: String,
+        bitmap: Bitmap,
+        copies: Int
+    ) {
         Log.d("StarMicronicsPrint", "PrintBitmap start.")
 
         val settings = StarConnectionSettings(interfaceType, identifier)
@@ -80,7 +81,10 @@ class StarMicronicsPrintPlugin : FlutterPlugin, MethodCallHandler {
                 printer.openAsync().await()
 
                 val builder = StarXpandCommandBuilder()
-                builder.addDocument(createDocument(bitmap))
+
+                for (i in 1..copies) {
+                    builder.addDocument(createDocument(bitmap))
+                }
                 val commands = builder.getCommands()
 
                 printer.printAsync(commands).await()

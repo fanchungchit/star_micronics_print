@@ -19,13 +19,13 @@ abstract class StarMicronicsPrintPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> printBitmap(
-      InterfaceType interfaceType, String identifier, Uint8List bitmap) {
+  Future<void> printBitmap(InterfaceType interfaceType, String identifier,
+      Uint8List bitmap, int copies) {
     throw UnimplementedError('printBitmap() has not been implemented.');
   }
 
   Future<void> printPath(
-      InterfaceType interfaceType, String identifier, String path) {
+      InterfaceType interfaceType, String identifier, String path, int copies) {
     throw UnimplementedError('printPath() has not been implemented.');
   }
 }
