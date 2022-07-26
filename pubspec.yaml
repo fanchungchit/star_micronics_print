@@ -1,6 +1,6 @@
 name: star_micronics_print
 description: A new Flutter plugin project.
-version: 1.0.0
+version: 1.0.0+1
 homepage: 'https://github.com/Bridges-Tech/star_micronics_print'
 
 environment:
