@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.0+3
+
+* Update SDK version.
+
 ## 1.1.0+2
 
 * Add copies.

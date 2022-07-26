@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data';
 
 import 'src/interface_type.dart';
 import 'star_micronics_print_platform_interface.dart';
-
 export 'src/interface_type.dart';
 
 class StarMicronicsPrint {
